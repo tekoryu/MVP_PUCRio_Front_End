@@ -2,7 +2,8 @@
   --------------------------------------------------------------------------------------
   Function to fill the div content with html from another page.
   This part of the code will not be DRY efficient, cause I'm still experimenting
-  with JScript.
+  with JScript. Function getList was called to populate the table WHEN the page
+  is called.
   --------------------------------------------------------------------------------------
 */
 
@@ -24,6 +25,8 @@ projectsLink.addEventListener('click', function (event) {
             contentDiv.innerHTML = data;
             //Populates table
             getList()
+            // Attach the function to the click event of the <a> element
+            document.getElementById('novo_projeto_clique').addEventListener('click', toggleVisibility);
         })
         .catch(error => {
             console.error('Não foi possível carregar', error);
@@ -62,7 +65,7 @@ const getList = async () => {
 const insertButton = (parent) => {
   let span = document.createElement("span");
   let txt = document.createTextNode("\u00D7");
-  span.className = "close";
+  span.className = "close col-xs-1 center-block";
   span.appendChild(txt);
   parent.appendChild(span);
 }
@@ -81,9 +84,24 @@ const insertList = (nameProject, description) => {
     cel.textContent = item[i];
   }
   insertButton(row.insertCell(-1))
-  document.getElementById("newInput").value = "";
-  document.getElementById("newQuantity").value = "";
-  document.getElementById("newPrice").value = "";
+  document.getElementById("newProject").value = "";
+  document.getElementById("newDescription").value = "";
 
   removeElement()
+}
+
+/*
+  --------------------------------------------------------------------------------------
+  Função para esconder o formulário de NOVO projeto
+  --------------------------------------------------------------------------------------
+*/
+function toggleVisibility() {
+  var myDiv = document.getElementById('novo_formulario');
+
+  // Toggle the visibility of the div
+  if (myDiv.style.display === 'none') {
+    myDiv.style.display = 'block';
+  } else {
+    myDiv.style.display = 'none';
+  }
 }

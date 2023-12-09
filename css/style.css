@@ -3,8 +3,6 @@
     Estilos criados com propósito de demonstrar aos avaliadores conhecimentos na
     área de Cascade Style Sheets.
 
-
-
  */
         body {
             font-family: Arial, sans-serif;
@@ -35,3 +33,8 @@
         #navigation a:hover {
             background-color: #555;
         }
+
+        .close:hover {
+        color: #f44336 !important;
+        font-weight: bolder;
+}

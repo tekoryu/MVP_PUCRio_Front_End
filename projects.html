@@ -1,9 +1,35 @@
 <h1 class="mt-5">Seus projetos</h1>
+
 <div class="row justify-content-end">
     <div class="col-md-2">
-        <span class="font-weight-bold mb-3 pb-2">Novo Projeto</span>
+        <a href="#" class="font-weight-bold mb-3 pb-2 text-decoration-none"
+           id="novo_projeto_clique">Novo Projeto</a>
     </div>
 </div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8" id="novo_formulario">
+        <div class="newItem form-group">
+            <!-- Novo Projeto: Nome -->
+            <div class="form-group">
+                <label for="newProject">Nome:</label>
+                <input type="text" id="newProject" class="form-control"
+                placeholder="Obras Completas MDA">
+            </div>
+            <!-- Novo Projeto: Descrição-->
+            <div class="form-group">
+                <label for="newDescription">Descrição:</label>
+                <input type="text" id="newDescription" class="form-control"
+                   placeholder="Extração de Textos da Coleção Ediouro do Carlos Drummond de Andrade">
+            </div>
+
+            <button type="button" class="btn btn-primary addBtn"
+                    onclick="newItem()">Adicionar</button>
+            <hr>
+        </div>
+    </div>
+</div>
+
 <div class="row justify-content-center">
     <div class="col-md-8">
         <section class="items">
@@ -12,7 +38,8 @@
                     <tr>
                         <th>Nome</th>
                         <th>Descrição</th>
-                        <th><img src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                        <th class="text-center"><img
+                                src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
                                  width="15px" height="15px"></th>
                     </tr>
                 </tbody>
