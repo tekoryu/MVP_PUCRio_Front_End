@@ -35,6 +35,10 @@
         }
 
         .close:hover {
-        color: #f44336 !important;
-        font-weight: bolder;
-}
+            color: #f44336 !important;
+            font-weight: bolder;
+        }
+
+        #novo_formulario {
+            display: none;
+        }

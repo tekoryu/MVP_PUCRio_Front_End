@@ -83,6 +83,7 @@ const insertList = (nameProject, description) => {
     var cel = row.insertCell(i);
     cel.textContent = item[i];
   }
+
   insertButton(row.insertCell(-1))
   document.getElementById("newProject").value = "";
   document.getElementById("newDescription").value = "";
@@ -96,12 +97,72 @@ const insertList = (nameProject, description) => {
   --------------------------------------------------------------------------------------
 */
 function toggleVisibility() {
-  var myDiv = document.getElementById('novo_formulario');
-
+  let myDiv = document.getElementById('novo_formulario');
+  let myStyle = getComputedStyle(myDiv)
   // Toggle the visibility of the div
-  if (myDiv.style.display === 'none') {
+  if (myDiv.style.display === 'none' || myDiv.style.display === '' ) {
     myDiv.style.display = 'block';
   } else {
     myDiv.style.display = 'none';
   }
+}
+
+/*
+  --------------------------------------------------------------------------------------
+  Função para remover um item da lista de acordo com o click no botão close
+  --------------------------------------------------------------------------------------
+*/
+const removeElement = () => {
+  let close = document.getElementsByClassName("close");
+  // var table = document.getElementById('myTable');
+  let i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      let div = this.parentElement.parentElement;
+      const nomeItem = div.getElementsByTagName('td')[0].innerHTML
+      if (confirm("Você tem certeza?")) {
+        div.remove()
+        deleteItem(nomeItem)
+        alert("Removido!")
+      }
+    }
+  }
+}
+/*
+  --------------------------------------------------------------------------------------
+  Função para adicionar um novo projeto com descrição
+  --------------------------------------------------------------------------------------
+*/
+const newItem = () => {
+  let inputProject = document.getElementById("newProject").value;
+  let inputDescription = document.getElementById("newDescription").value;
+
+  if (inputProject === '') {
+    alert("Escreva o nome de um projeto!");
+  } else {
+    insertList(inputProject, inputDescription)
+    postItem(inputProject, inputDescription)
+    alert("Projeto adicionado!")
+  }
+}
+
+/*
+  --------------------------------------------------------------------------------------
+  Função para colocar um item na lista do servidor via requisição POST
+  --------------------------------------------------------------------------------------
+*/
+const postItem = async (inputProject, inputDescription, inputPrice) => {
+  const formData = new FormData();
+  formData.append('name', inputProject);
+  formData.append('description', inputDescription);
+
+  let url = 'http://127.0.0.1:5000/project';
+  fetch(url, {
+    method: 'post',
+    body: formData
+  })
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
