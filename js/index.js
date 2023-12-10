@@ -44,7 +44,7 @@ const getList = async () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      data.projects.forEach(item => insertList(item.name, item.description))
+      data.projects.forEach(item => insertList(item.name, item.description, item.date_added))
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -68,8 +68,8 @@ const insertButton = (parent) => {
   Função para inserir items na lista apresentada
   --------------------------------------------------------------------------------------
 */
-const insertList = (nameProject, description) => {
-  var item = [nameProject, description]
+const insertList = (nameProject, description, date_added) => {
+  var item = [nameProject, description, date_added]
   var table = document.getElementById('tbl_projetos');
   var row = table.insertRow();
 
@@ -130,11 +130,13 @@ const removeElement = () => {
 const newItem = () => {
   let inputProject = document.getElementById("newProject").value;
   let inputDescription = document.getElementById("newDescription").value;
+  let current_date = new Date();
+  let dateCreated= `${current_date.getDate()}/${current_date.getMonth() + 1}/${current_date.getFullYear()}`;
 
   if (inputProject === '') {
     alert("Escreva o nome de um projeto!");
   } else {
-    insertList(inputProject, inputDescription)
+    insertList(inputProject, inputDescription, dateCreated)
     postItem(inputProject, inputDescription)
     alert("Projeto adicionado!")
   }
