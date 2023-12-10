@@ -1,14 +1,15 @@
-<h1 class="mt-5">Seus projetos</h1>
-
-<div class="row justify-content-end">
-    <div class="col-md-2">
-        <a href="#" class="font-weight-bold mb-3 pb-2 text-decoration-none"
-           id="novo_projeto_clique">Novo Projeto</a>
+<div class="row justify-content-center">
+    <div class="col-sm-8 mt-5">
+        <span class="fake-heading" >Meus Projetos </span>
+        <a class = "badge badge-secondary" href="#"
+           id="novo_projeto_clique">Novo</a>
     </div>
+
+
 </div>
 
 <div class="row justify-content-center">
-    <div class="col-md-8" id="novo_formulario">
+    <div class="col-sm-8 modal-content" id="novo_formulario">
         <div class="newItem form-group">
             <!-- Novo Projeto: Nome -->
             <div class="form-group">
@@ -22,24 +23,23 @@
                 <input type="text" id="newDescription" class="form-control"
                    placeholder="Extração de Textos da Coleção Ediouro do Carlos Drummond de Andrade">
             </div>
-            <button type="button" class="btn btn-primary addBtn"
+            <button type="button" class="btn btn-secondary addBtn"
                     onclick="newItem()">Adicionar</button>
-            <hr>
         </div>
     </div>
 </div>
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-sm-8">
         <section class="items">
             <table id="tbl_projetos" class="table table-light">
                 <tbody>
                     <tr>
                         <th>Nome</th>
                         <th>Descrição</th>
-                        <th class="text-center"><img
+                        <th class="center"><img
                                 src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
-                                 width="15px" height="15px"></th>
+                                 width="15px" height="15px" alt="Remover"></th>
                     </tr>
                 </tbody>
             </table>

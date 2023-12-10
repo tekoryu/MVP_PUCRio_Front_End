@@ -50,12 +50,6 @@ const getList = async () => {
       console.error('Error:', error);
     });
 }
-/*
-  --------------------------------------------------------------------------------------
-  Chamada da função para carregamento inicial dos dados
-  --------------------------------------------------------------------------------------
-*/
-
 
 /*
   --------------------------------------------------------------------------------------
@@ -65,7 +59,7 @@ const getList = async () => {
 const insertButton = (parent) => {
   let span = document.createElement("span");
   let txt = document.createTextNode("\u00D7");
-  span.className = "close col-xs-1 center-block";
+  span.className = "close";
   span.appendChild(txt);
   parent.appendChild(span);
 }
@@ -160,6 +154,23 @@ const postItem = async (inputProject, inputDescription, inputPrice) => {
   fetch(url, {
     method: 'post',
     body: formData
+  })
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+/*
+  --------------------------------------------------------------------------------------
+  Função para deletar um item da lista do servidor via requisição DELETE
+  --------------------------------------------------------------------------------------
+*/
+const deleteItem = (item) => {
+  console.log(item)
+  let url = 'http://127.0.0.1:5000/delete/project?name=' + item;
+  fetch(url, {
+    method: 'delete'
   })
     .then((response) => response.json())
     .catch((error) => {

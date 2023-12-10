@@ -4,41 +4,64 @@
     área de Cascade Style Sheets.
 
  */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        #sidebar {
-            background-color: #333;
-            color: white;
-            height: 100vh;
-            padding-top: 20px;
-        }
+#sidebar {
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
+}
 
-        #logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+#logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        #navigation a {
-            text-decoration: none;
-            color: white;
-            padding: 10px;
-            display: block;
-            border-bottom: 1px solid #555;
-        }
+#navigation a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid #555;
+}
 
-        #navigation a:hover {
-            background-color: #555;
-        }
+#navigation a:hover {
+    background-color: #555;
+}
 
-        .close:hover {
-            color: #f44336 !important;
-            font-weight: bolder;
-        }
 
+.close{
+    /* o bootstrap possui uma classe close, vamos dar override*/
+    float: left !important;
+}
+.close:hover {
+    color: #f44336 !important;
+    font-weight: bolder;
+    cursor: pointer;
+}
         #novo_formulario {
             display: none;
         }
+.link-unstyled, .link-unstyled:link, .link-unstyled:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+.bg-menu:hover {
+  background-color: #0079C1;
+  color: #FFFFFF;
+}
+.clickable {
+  cursor: pointer;
+}
+
+.fake-heading{
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+
