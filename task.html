@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+    <div class="col-sm-8 mt-5">
+        <span class="fake-heading" >Minhas Tarefas </span>
+        <a class = "badge badge-secondary" href="#"
+           id="nova_tarefa_clique">Nova Tarefa</a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-8 modal-content" id="novo_formulario">
+        <div class="newItem form-group">
+            <!-- Novo Tarefa: Nome -->
+            <div class="form-group">
+                <label for="newTask">Nome:</label>
+                <input type="text" id="newTask" class="form-control"
+                placeholder="Digite o nome da tarefa:">
+            </div>
+            <!-- Nova Tarefa: Descrição -->
+            <div class="form-group">
+                <label for="newDescription">Descrição:</label>
+                <input type="text" id="newDescription" class="form-control"
+                placeholder="Uma breve descrição do documento:">
+            </div>
+            <!-- Nova Tarefa: Cabeçalho -->
+            <div class="form-group">
+                <label for="newHeader">Cabeçalho:</label>
+                <input type="text" id="newHeader" class="form-control"
+                value="750">
+            </div>
+            <!-- Nova Tarefa: Rodapé -->
+            <div class="form-group">
+                <label for="newFooter">Rodapé:</label>
+                <input type="text" id="newFooter" class="form-control"
+                value="70">
+            </div>
+            <!-- Nova Tarefa: Sobreposição Linha -->
+            <div class="form-group">
+                <label for="newLineOverlap">Sobreposição de Linha:</label>
+                <input type="text" id="newLineOverlap" class="form-control"
+                value="0.5">
+            </div>
+            <!-- Nova Tarefa: Margem Linha -->
+            <div class="form-group">
+                <label for="newLineMargin">Margem de Linha:</label>
+                <input type="text" id="newLineMargin" class="form-control"
+                value="0.5">
+            </div>
+            <!-- Nova Tarefa: Margem Caracter -->
+            <div class="form-group">
+                <label for="newCharMargin">Margem de Caracter:</label>
+                <input type="text" id="newCharMargin" class="form-control"
+                value="2.0">
+            </div>
+            <!-- Nova Tarefa: Número de Páginas -->
+            <div class="form-group">
+                <label for="newPageRange">Páginas(1-20):</label>
+                <input type="text" id="newPageRange" class="form-control"
+                value="1-20">
+            </div>
+            <!-- Nova Tarefa: Arquivo -->
+            <div class="form-group">
+                <label for="newPageRange">Páginas(1-20):</label>
+                <input type="file" id="newFile" class="form-control"
+                value="1-20">
+            </div>
+            <button type="button" class="btn btn-secondary addBtn"
+                    onclick="newTaskItem()">Adicionar</button>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-8">
+        <section class="items">
+            <table id="tbl_tasks" class="table table-light">
+                <tbody>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Criado</th>
+                        <th class="center"><img
+                                src="https://cdn-icons-png.flaticon.com/512/126/126468.png"
+                                 width="15px" height="15px" alt="Remover"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+
