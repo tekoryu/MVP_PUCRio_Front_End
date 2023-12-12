@@ -330,14 +330,15 @@ const newTaskItem = () => {
   let inputLineMargin = document.getElementById("newLineMargin").value;
   let inputCharMargin = document.getElementById("newCharMargin").value;
   let inputPageRange = document.getElementById("newPageRange").value;
-  let inputFile = document.getElementById("newFile").value;
+  //pega o arquivo
+  let fileInput = document.getElementById("newFile")
+  let inputFile = fileInput.files[0];
 
-  console.log(current_project)
   if (inputTask === '') {
     alert("Dê um nome para a tarefa!");
   } else {
     insertTask("", inputTask, inputDescription, dateCreated);
-    postTask(inputTask, inputDescription, inputHeader, inputFooter, inputLineOverlap, inputLineMargin, inputCharMargin, inputPageRange);
+    postTask(inputTask, inputDescription, inputHeader, inputFooter, inputLineOverlap, inputLineMargin, inputCharMargin, inputPageRange, inputFile);
     alert("Tarefa adicionada!");
   }
 }
@@ -346,8 +347,10 @@ const newTaskItem = () => {
   Função para colocar uma tarefa na lista do servidor via requisição POST
   --------------------------------------------------------------------------------------
 */
-  const postTask = async (inputTask, inputDescription, inputHeader, inputFooter, inputLineOverlap, inputLineMargin, inputCharMargin, inputPageRange) => {
+  const postTask = async (inputTask, inputDescription, inputHeader, inputFooter, inputLineOverlap, inputLineMargin, inputCharMargin, inputPageRange, inputFile) => {
   const formData = new FormData();
+  const modal = new bootstrap.Modal(document.getElementById('myModal'));
+  const modalContent = document.getElementById('modalContent');
   formData.append('name', inputTask);
   formData.append('description', inputDescription);
   formData.append('header', inputHeader);
@@ -356,8 +359,8 @@ const newTaskItem = () => {
   formData.append('line_margin', inputLineMargin);
   formData.append('char_margin', inputCharMargin);
   formData.append('page_numbers', inputPageRange);
-  formData.append('project_id', "1");
-
+  formData.append('project_id', current_project);
+  formData.append('pdf_file', inputFile)
 
   let url = 'http://127.0.0.1:5000/task';
 
@@ -366,6 +369,21 @@ const newTaskItem = () => {
     body: formData
   })
     .then((response) => response.json())
+    .then((data) => {
+      // Extract data from JSON response
+      const { description, id, name, resulting_text } = data;
+
+      // Set the content of the modal
+      modalContent.innerHTML = `
+        <p><strong>ID:</strong> ${id}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Description:</strong> ${description}</p>
+        <p><strong>Resulting Text:</strong> ${resulting_text}</p>
+      `;
+
+      // Show the modal
+      modal.show();
+    })
     .catch((error) => {
       console.error('Error:', error);
     });
